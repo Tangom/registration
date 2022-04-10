@@ -1,0 +1,7 @@
+@import url(normalize.css);
+@import url(../fonts/inter.css);
+@import url(../blocks/root/root.css);
+@import url(../blocks/page/page.css);
+@import url(../blocks/button/button.css);
+@import url(../blocks/form/form.css);
+@import url(../blocks/header/header__title.css);
