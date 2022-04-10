@@ -103,7 +103,7 @@ function full(thisInput) {
 }
 
 thisInput.addEventListener('input', full, false);
-full(thisInput);
+
 
 // Добавим фиксацию плейсхолдера если строка не пустая
 // const notEmpty = (formElement, inputElement) => {
