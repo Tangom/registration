@@ -43,19 +43,7 @@
 }
 
 .form__input:focus {
-  border-bottom-color: #007DFF;
-}
-
-.form__input:focus + .form__placeholder {
-  font-size: 12px;
-  line-height: 14px;
-  transform: translateY(-160%) scale(1);
-}
-
-.form__placeholder_filled {
-  font-size: 12px;
-  line-height: 14px;
-  transform: translateY(-160%) scale(1);
+  border-bottom-color:green;
 }
 
 .form__placeholder {
@@ -68,6 +56,12 @@
   transform: translateY(-50%) scale(1);
   transition: 0.3s;
   pointer-events: none;
+}
+
+.form__input:focus + .form__placeholder, .form__placeholder_filled {
+  font-size: 12px;
+  line-height: 14px;
+  transform: translateY(-160%) scale(1);
 }
 
 .form__checkbox {

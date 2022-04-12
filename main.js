@@ -90,12 +90,12 @@ const enableValidation = () => {
 };
 // Вызовем функцию
 enableValidation();
+
 const thisInput = document.getElementById('name-input');
 
-function full(thisInput) {
+function full(event) {
   const placeholderElement = document.getElementById('name-input-placeholder');
-  // const thisInput = document.getElementById('name-input');
-  if (thisInput.currentTarget.value.length > 0) {
+  if (event.currentTarget.value.length > 0) {
     placeholderElement.classList.add('form__placeholder_filled');
   } else {
     placeholderElement.classList.remove('form__placeholder_filled');
