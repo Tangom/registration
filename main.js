@@ -28,12 +28,20 @@ const toggleButtonState = (inputList, buttonElement) => {
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
-    buttonElement.classList.add('button_inactive');
+       buttonElement.classList.add('button_inactive');
   } else {
     // иначе сделай кнопку активной
     buttonElement.classList.remove('button_inactive');
   }
 };
+
+const full = (evt, placeholderElement) => {
+  if (evt.currentTarget.value.length > 0) {
+    placeholderElement.classList.add('form__placeholder_filled');
+  } else {
+    placeholderElement.classList.remove('form__placeholder_filled');
+  }
+}
 
 const isValid = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
@@ -59,19 +67,21 @@ const setEventListeners = (formElement) => {
   // Обойдём все элементы полученной коллекции
   inputList.forEach((inputElement) => {
     // каждому полю добавим обработчик события input
-    inputElement.addEventListener('input', () => {
+    inputElement.addEventListener('input', (evt) => {
       // Внутри колбэка вызовем isValid,
       // передав ей форму и проверяемый элемент
       isValid(formElement, inputElement);
-      // здесь добавим уход надписи вверх !!!!
-      // notEmpty(formElement, inputElement)
       //Работа кнопки
       toggleButtonState(inputList, buttonElement);
+            // Находим плейсхолдеры в форме
+      const placeholderElement = formElement.querySelector(`#${inputElement.id}-placeholder`);
+      // Добавим фиксацию плейсхолдера если строка не пустая
+      full(evt, placeholderElement);
     });
   });
 };
 
-const enableValidation = () => {
+  const enableValidation = () => {
   // Найдём все формы с указанным классом в DOM,
   // сделаем из них массив методом Array.from
   const formList = Array.from(document.querySelectorAll('.form'));
@@ -91,33 +101,6 @@ const enableValidation = () => {
 // Вызовем функцию
 enableValidation();
 
-const thisInput = document.getElementById('name-input');
-
-function full(event) {
-  const placeholderElement = document.getElementById('name-input-placeholder');
-  if (event.currentTarget.value.length > 0) {
-    placeholderElement.classList.add('form__placeholder_filled');
-  } else {
-    placeholderElement.classList.remove('form__placeholder_filled');
-  }
-}
-
-thisInput.addEventListener('input', full, false);
-
-
-// Добавим фиксацию плейсхолдера если строка не пустая
-// const notEmpty = (formElement, inputElement) => {
-//   const placeholderElement = formElement.querySelector(`#${inputElement.id}-input-placeholder`);
-//   if (inputElement.value.trim().length === 0) {
-//     // Если поле не пустое добавляем .form__placeholder_is-fixed
-//     placeholderElement.classList.remove('form__placeholder_filled');
-//   }
-//    else {
-//      // Если пустое то удаляем
-//      placeholderElement.classList.add('form__placeholder_filled');
-//    }
-// };
-// function ctrlButton() {
 //   btn.disabled = this.value.trim().length === 0;
 // }
 //
