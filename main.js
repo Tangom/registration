@@ -57,13 +57,10 @@ const setEventListeners = (formElement) => {
   // Находим все поля внутри формы,
   // сделаем из них массив методом Array.from
   const inputList = Array.from(formElement.querySelectorAll('.form__input'));
-
   // Найдём в текущей форме кнопку отправки
   const buttonElement = formElement.querySelector('.form__submit');
-
   // Вызовем toggleButtonState и передадим ей массив полей и кнопку
   toggleButtonState(inputList, buttonElement);
-
   // Обойдём все элементы полученной коллекции
   inputList.forEach((inputElement) => {
     // каждому полю добавим обработчик события input
