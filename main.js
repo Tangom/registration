@@ -28,7 +28,7 @@ const toggleButtonState = (inputList, buttonElement) => {
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
-       buttonElement.classList.add('button_inactive');
+    buttonElement.classList.add('button_inactive');
   } else {
     // иначе сделай кнопку активной
     buttonElement.classList.remove('button_inactive');
@@ -73,7 +73,7 @@ const setEventListeners = (formElement) => {
       isValid(formElement, inputElement);
       //Работа кнопки
       toggleButtonState(inputList, buttonElement);
-            // Находим плейсхолдеры в форме
+      // Находим плейсхолдеры в форме
       const placeholderElement = formElement.querySelector(`#${inputElement.id}-placeholder`);
       // Добавим фиксацию плейсхолдера если строка не пустая
       full(evt, placeholderElement);
@@ -81,7 +81,7 @@ const setEventListeners = (formElement) => {
   });
 };
 
-  const enableValidation = () => {
+const enableValidation = () => {
   // Найдём все формы с указанным классом в DOM,
   // сделаем из них массив методом Array.from
   const formList = Array.from(document.querySelectorAll('.form'));
